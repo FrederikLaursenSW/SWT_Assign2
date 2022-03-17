@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Timers;
+using ClassLibrary.Interfaces;
 
-namespace UsbSimulator
+namespace ClassLibrary.Models
 {
     public class UsbChargerSimulator : IUsbCharger
     {

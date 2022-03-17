@@ -1,4 +1,6 @@
-﻿namespace SWT_Assign2
+﻿using ClassLibrary.Models;
+
+namespace SWT_Assign2
 {
 
     class Program
@@ -6,6 +8,9 @@
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
+
+            Door door = new Door();
+            RfidReader rfidReader = new RfidReader();
 
             bool finish = false;
             do

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models
 {
-    internal class ChargeControl
+    public class ChargeControl
     {
     }
 }

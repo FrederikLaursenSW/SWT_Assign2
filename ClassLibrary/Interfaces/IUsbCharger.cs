@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UsbSimulator
+namespace SWT_Assign2.Classes
 {
     public class CurrentEventArgs : EventArgs
     {

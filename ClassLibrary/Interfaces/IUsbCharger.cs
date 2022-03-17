@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SWT_Assign2.Classes
+namespace ClassLibrary.Interfaces
 {
     public class CurrentEventArgs : EventArgs
     {

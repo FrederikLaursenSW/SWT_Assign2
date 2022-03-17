@@ -9,6 +9,10 @@ namespace ClassLibrary.Models
 {
     public class Door : IDoor
     {
+
+        public event EventHandler<DoorEvents> DoorIsOpenEvent;
+
+
         public void LockDoor()
         {
             throw new NotImplementedException();

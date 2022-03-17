@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    internal interface IDoor
+    public interface IDoor
     {
+        event EventHandler<DoorEvents> DoorIsOpenEvent;
+
         void LockDoor();
         void UnlockDoor();
 
         void OnDoorOpen();
 
         void OnDoorClose();
+    }
+
+    public class DoorEvents : EventArgs
+    {
+        public bool DoorIsOpen { get; set; }
     }
 }

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Fakes\" />
-    <Folder Include="Events\" />
   </ItemGroup>
 
 </Project>

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    public interface IRfidReader
+    public interface IChargeControl
     {
-        void OnRfidRead(int id);
+        bool Connected { get; }
 
+        void StartCharge();
+        void StopCharge();
     }
 }

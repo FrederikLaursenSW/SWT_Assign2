@@ -18,7 +18,6 @@ namespace ClassLibrary.Models
             DoorOpen
         };
 
-
         // Her mangler flere member variable
         private LadeskabState _state;
         private IChargeControl _charger;
@@ -27,10 +26,11 @@ namespace ClassLibrary.Models
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
+        public bool CurrentDoorIsOpen { get; set; }
         public StationControl(IDoor door)
         {
             _door = door;
-            _door.DoorIsOpenEvent += DoorHandler;
+            _door.DoorChangedEvent += HandleDoorChangedEvent;
         }
 
         // Her mangler constructor
@@ -91,9 +91,9 @@ namespace ClassLibrary.Models
 
         // Her mangler de andre trigger handlere
 
-        private void DoorHandler(Object o, DoorEvents doorEvent)
+        private void HandleDoorChangedEvent(Object o, DoorEvents doorEvent)
         {
-
+            CurrentDoorIsOpen = doorEvent.DoorIsOpen;
         }
     }
 }

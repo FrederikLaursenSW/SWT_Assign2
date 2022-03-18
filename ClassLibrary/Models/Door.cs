@@ -9,28 +9,39 @@ namespace ClassLibrary.Models
 {
     public class Door : IDoor
     {
-
-        public event EventHandler<DoorEvents> DoorIsOpenEvent;
-
+        public bool IsDoorOpen { get; set; }
+        public bool IsDoorLocked { get; set; }
+        public event EventHandler<DoorEvents> DoorChangedEvent;
 
         public void LockDoor()
         {
-            throw new NotImplementedException();
+            IsDoorLocked = true;
         }
 
         public void UnlockDoor()
         {
-            throw new NotImplementedException();
+            IsDoorLocked = false;
         }
 
         public void OnDoorOpen()
         {
-            throw new NotImplementedException();
+            if (IsDoorOpen == false && IsDoorLocked == false )
+            {
+                OnDoorChanged(new DoorEvents { DoorIsOpen = true });
+                IsDoorOpen = true;
+            }
         }
-
         public void OnDoorClose()
         {
-            throw new NotImplementedException();
+            if (IsDoorOpen == true && IsDoorLocked == false)
+            {
+                OnDoorChanged(new DoorEvents { DoorIsOpen = false });
+                IsDoorOpen = false;
+            }
+        }
+        public void OnDoorChanged(DoorEvents e)
+        {
+            DoorChangedEvent?.Invoke(this, e);
         }
     }
 }

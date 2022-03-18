@@ -8,16 +8,12 @@ namespace ClassLibrary.Interfaces
 {
     public interface IDoor
     {
-        event EventHandler<DoorEvents> DoorIsOpenEvent;
-
+        event EventHandler<DoorEvents> DoorChangedEvent;
         void LockDoor();
         void UnlockDoor();
-
         void OnDoorOpen();
-
         void OnDoorClose();
     }
-
     public class DoorEvents : EventArgs
     {
         public bool DoorIsOpen { get; set; }

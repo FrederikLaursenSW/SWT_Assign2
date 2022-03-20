@@ -23,14 +23,18 @@ namespace ClassLibrary.Models
         private IChargeControl _charger;
         private int _oldId;
         private IDoor _door;
+        private IRfidReader _rfidReader;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         public bool CurrentDoorIsOpen { get; set; }
-        public StationControl(IDoor door)
+
+        public StationControl(IDoor door, IRfidReader reader)
         {
             _door = door;
             _door.DoorChangedEvent += HandleDoorChangedEvent;
+            _rfidReader = reader;
+            _rfidReader.RfidDetectedEvent += HandleRfidDetectedEvent;
         }
 
         // Her mangler constructor
@@ -95,5 +99,11 @@ namespace ClassLibrary.Models
         {
             CurrentDoorIsOpen = doorEvent.DoorIsOpen;
         }
+
+        private void HandleRfidDetectedEvent(Object o, RfidEvent RfidDetectedEvent)
+        {
+            RfidDetected(RfidDetectedEvent.RfidId);
+        }
+
     }
 }

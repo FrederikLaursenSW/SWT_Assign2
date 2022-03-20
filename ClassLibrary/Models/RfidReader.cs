@@ -10,11 +10,16 @@ namespace ClassLibrary.Models
     public class RfidReader : IRfidReader
     {
 
-        public event EventHandler<RFIDEvents> RFIDDetectedEvent;
-
+        public event EventHandler<RfidEvent> RfidDetectedEvent;
+        
         public void OnRfidRead(int id)
         {
-            throw new NotImplementedException();
+            OnRfidDetected(new RfidEvent { RfidId = id });
+        }
+
+        public void OnRfidDetected(RfidEvent e)
+        {
+            RfidDetectedEvent?.Invoke(this, e);
         }
     }
 }

@@ -11,17 +11,15 @@ namespace ClassLibrary.Interfaces
 
     public interface IRfidReader
     {
-
-        public event EventHandler<RFIDEvents> RFIDDetectedEvent;
-
+        public event EventHandler<RfidEvent> RfidDetectedEvent;
         void OnRfidRead(int id);
-
     }
-
-
-    public class RFIDEvents : EventArgs
+    public class RfidEvent : EventArgs
     {
-        public bool DoorIsOpen { get; set; }
+        public int RfidId { get; set; }
     }
+
+
+
 }
 

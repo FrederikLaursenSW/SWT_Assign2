@@ -12,14 +12,16 @@ namespace LadeskabTest
 {
     public class StationControlUnitTest
     {
-        private IDoor _doorSource; // Måske skal dette være en Fake class? 
+        private IDoor _doorSource; // Måske skal dette være en Fake class?
+        private IRfidReader _RfidReaderSource;
         private StationControl _uut;
        
         [SetUp]
         public void Setup()
         {
             _doorSource = Substitute.For<IDoor>();
-            _uut = new StationControl(_doorSource);
+            _RfidReaderSource = Substitute.For<IRfidReader>();
+            _uut = new StationControl(_doorSource, _RfidReaderSource);
         }
 
         [Test]

@@ -17,8 +17,6 @@ namespace ClassLibrary.Models
         {
             if (IsDoorOpen == false)
                 IsDoorLocked = true;
-            
-            
         }
 
         public void UnlockDoor()

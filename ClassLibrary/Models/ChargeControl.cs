@@ -11,7 +11,7 @@ namespace ClassLibrary.Models
     {
         public bool Connected { get; set; }
 
-        private bool Overload { get; set; }
+        public bool Overload { get; set; }
 
         private UsbChargerSimulator testSimulator;
 

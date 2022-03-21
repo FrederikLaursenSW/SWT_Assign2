@@ -36,7 +36,7 @@ namespace ClassLibrary.Models
         }
         public void OnDoorClose()
         {
-            if (IsDoorOpen == true && IsDoorLocked == false)
+            if (IsDoorOpen == true)
             {
                 IsDoorOpen = false;
                 OnDoorChanged(new DoorEvents { DoorIsOpen = IsDoorOpen });

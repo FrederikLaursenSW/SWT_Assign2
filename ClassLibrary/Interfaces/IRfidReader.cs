@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 namespace ClassLibrary.Interfaces
 {
 
-   
-
     public interface IRfidReader
     {
         public event EventHandler<RfidEvent> RfidDetectedEvent;

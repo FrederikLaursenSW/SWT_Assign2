@@ -25,7 +25,7 @@ namespace ClassLibrary.Models
         private IDoor _door;
         private IRfidReader _rfidReader;
 
-        private IUsbCharger _usbCharger;
+       
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
@@ -37,8 +37,7 @@ namespace ClassLibrary.Models
             _door.DoorChangedEvent += HandleDoorChangedEvent;
             _rfidReader = reader;
             _rfidReader.RfidDetectedEvent += HandleRfidDetectedEvent;
-            _usbCharger = new UsbChargerSimulator();
-            _charger = new ChargeControl(_usbCharger);
+            _charger = new ChargeControl(new UsbChargerSimulator());
         }
 
         // Her mangler constructor
@@ -79,7 +78,7 @@ namespace ClassLibrary.Models
                     if (id == _oldId)
                     {
                         _charger.StopCharge();
-                        _door.UnlockDoor();
+                        _door.UnLockDoor();
                         using (var writer = File.AppendText(logFile))
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);

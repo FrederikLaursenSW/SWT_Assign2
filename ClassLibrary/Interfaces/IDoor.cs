@@ -10,7 +10,7 @@ namespace ClassLibrary.Interfaces
     {
         event EventHandler<DoorEvents> DoorChangedEvent;
         void LockDoor();
-        void UnlockDoor();
+        void UnLockDoor();
         void OnDoorOpen();
         void OnDoorClose();
     }

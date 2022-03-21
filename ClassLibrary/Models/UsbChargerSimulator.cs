@@ -110,7 +110,7 @@ namespace ClassLibrary.Models
 
         private void OnNewCurrent()
         {
-            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() {Current = this.CurrentValue});
+            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() {Current = this.CurrentValue, Connected = this.Connected, Overload = this._overload});
         }
     }
 }

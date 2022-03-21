@@ -8,7 +8,7 @@ namespace ClassLibrary.Interfaces
 {
     public interface IChargeControl
     {
-        bool Connected { get; }
+        public bool Connected { get; set; }
 
         void StartCharge();
         void StopCharge();

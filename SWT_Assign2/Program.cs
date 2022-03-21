@@ -19,6 +19,7 @@ namespace SWT_Assign2
 
             Door door = new Door();
             RfidReader rfidReader = new RfidReader();
+            StationControl stationControl = new StationControl(door, rfidReader);
 
             bool finish = false;
             do

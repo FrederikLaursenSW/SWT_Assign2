@@ -21,6 +21,7 @@ namespace ClassLibrary.Models
 
         public ChargeControl(IUsbCharger usbCharger)
         {
+            Connected = true;
             _usbCharger = usbCharger;
             _usbCharger.CurrentValueEvent += HandleChargingEvent;
             testSimulator = new UsbChargerSimulator();

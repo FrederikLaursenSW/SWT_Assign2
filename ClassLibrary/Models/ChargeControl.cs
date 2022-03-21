@@ -7,9 +7,9 @@ using ClassLibrary.Interfaces;
 
 namespace ClassLibrary.Models
 {
-    public class ChargeControl
+    public class ChargeControl : IChargeControl
     {
-        private bool Connected { get; set; }
+        public bool Connected { get; set; }
 
         private bool Overload { get; set; }
 

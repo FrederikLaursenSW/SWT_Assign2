@@ -1,12 +1,12 @@
 ﻿using ClassLibrary.Models;
 
 // RFID: Lav i testprojektet en klasse: RFIDUnitTest --> bliver eventet rejst på det rigtige tidspunkt?
+
 // Stationcontrol: Tjek om eventet fra RFID bliver modtaget. (bliver det rejst på det rigtige tidspunkt?) Test om den gør det rigtige.
 // Flere test på door
 // USB charger simulator --> lav test på denne klasse.
 // Lav chargecontrol klassen, tag udgangspunkt i stationscontrol.
 // Chargecontrol skal testes (
-// Slet IChargeControl
 
 
 namespace SWT_Assign2

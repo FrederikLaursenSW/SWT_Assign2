@@ -55,6 +55,7 @@ namespace ClassLibrary.Models
             }
             else
             {
+                Console.WriteLine("Sker der noget eller hvad");
                 testSimulator.StopCharge();
                 testSimulator.SimulateConnected(false);
             }

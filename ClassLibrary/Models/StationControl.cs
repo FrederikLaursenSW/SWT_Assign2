@@ -77,6 +77,8 @@ namespace ClassLibrary.Models
                     // Check for correct ID
                     if (id == _oldId)
                     {
+                        // Console.WriteLine("Current burde være: {0}", _charger.NewCurrent);
+
                         _charger.StopCharge();
                         _door.UnLockDoor();
                         using (var writer = File.AppendText(logFile))

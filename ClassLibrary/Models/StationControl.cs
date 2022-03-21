@@ -75,7 +75,7 @@ namespace ClassLibrary.Models
                     if (id == _oldId)
                     {
                         _charger.StopCharge();
-                        _door.UnlockDoor();
+                        _door.UnLockDoor();
                         using (var writer = File.AppendText(logFile))
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);

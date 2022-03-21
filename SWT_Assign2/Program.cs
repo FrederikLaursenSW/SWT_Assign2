@@ -6,7 +6,6 @@
 // USB charger simulator --> lav test på denne klasse.
 // Lav chargecontrol klassen, tag udgangspunkt i stationscontrol.
 // Chargecontrol skal testes (
-// Slet IChargeControl
 
 
 namespace SWT_Assign2

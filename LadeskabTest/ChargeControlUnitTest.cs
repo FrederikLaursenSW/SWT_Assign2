@@ -24,10 +24,11 @@ namespace LadeskabTest
         }
 
         [Test]
-        public void ChangedState_DoorOpens_CurrentDoorIsOpenTrue()
+        public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(int newCurrent)
         {
-            _doorSource.DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true });
-            Assert.That(_uut.CurrentDoorIsOpen, Is.True);
+            _chargerSimulatorSource.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = newCurrent});
+            Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
         }
-        
+
+    }
 }

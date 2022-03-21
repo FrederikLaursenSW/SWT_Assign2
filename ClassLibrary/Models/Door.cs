@@ -15,28 +15,34 @@ namespace ClassLibrary.Models
 
         public void LockDoor()
         {
-            IsDoorLocked = true;
+            if (IsDoorOpen == false)
+                IsDoorLocked = true;
+            
+            
         }
 
         public void UnlockDoor()
         {
-            IsDoorLocked = false;
+            if (IsDoorOpen == false)
+                IsDoorLocked = false;
         }
 
         public void OnDoorOpen()
         {
             if (IsDoorOpen == false && IsDoorLocked == false )
             {
-                OnDoorChanged(new DoorEvents { DoorIsOpen = true });
                 IsDoorOpen = true;
+                OnDoorChanged(new DoorEvents { DoorIsOpen = IsDoorOpen });
+                
             }
         }
         public void OnDoorClose()
         {
             if (IsDoorOpen == true && IsDoorLocked == false)
             {
-                OnDoorChanged(new DoorEvents { DoorIsOpen = false });
                 IsDoorOpen = false;
+                OnDoorChanged(new DoorEvents { DoorIsOpen = IsDoorOpen });
+                
             }
         }
         public void OnDoorChanged(DoorEvents e)

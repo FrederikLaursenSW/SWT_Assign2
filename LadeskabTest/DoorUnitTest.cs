@@ -12,7 +12,7 @@ namespace LadeskabTest
 {
     public class DoorUnitTest
     {
-        private IDoor _uut;
+        private Door _uut; // Skal dette være et interface eller en klasse
         private DoorEvents _receivedEventArgs;
 
 
@@ -21,7 +21,7 @@ namespace LadeskabTest
         {
             _receivedEventArgs = null;
 
-            _uut = new Door();
+            _uut = new Door(); 
 
             _uut.DoorChangedEvent +=
                 (o, args) =>
@@ -52,6 +52,17 @@ namespace LadeskabTest
             _uut.LockDoor();
             _uut.OnDoorOpen();
             Assert.That(_receivedEventArgs, Is.Null);
+        }
+
+        [Test]
+        public void LockDoorWhileOpen_LockDoor_NotLocked()
+        {
+            _uut.OnDoorOpen();
+            _uut.LockDoor();
+
+            Assert.That(_uut.IsDoorLocked, Is.False);
+
+           
         }
 
     }

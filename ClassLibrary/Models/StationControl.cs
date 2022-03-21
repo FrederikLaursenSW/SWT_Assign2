@@ -25,6 +25,8 @@ namespace ClassLibrary.Models
         private IDoor _door;
         private IRfidReader _rfidReader;
 
+       
+
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         public bool CurrentDoorIsOpen { get; set; }
@@ -35,6 +37,7 @@ namespace ClassLibrary.Models
             _door.DoorChangedEvent += HandleDoorChangedEvent;
             _rfidReader = reader;
             _rfidReader.RfidDetectedEvent += HandleRfidDetectedEvent;
+            _charger = new ChargeControl(new UsbChargerSimulator());
         }
 
         // Her mangler constructor

@@ -35,11 +35,18 @@ namespace LadeskabTest
         [TestCase(500)]
         [TestCase(501)]
         [TestCase(2147483647)]
-
         public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(int newCurrent)
         {
             _chargerSimulatorSource.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = newCurrent});
             Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
+        }
+
+        [TestCase(true)]
+        public void StartCharge_Started_ConnectionIsTrue(bool isConnected)
+        {
+            _stationControlSource.Connected = isConnected;
+            
+            Assert.That(_uut.Connected, Is.EqualTo(isConnected));
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.Fakes;
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using NSubstitute;
@@ -14,13 +15,14 @@ namespace LadeskabTest
     {
         private ChargeControl _uut;
         private IUsbCharger _chargerSimulatorSource;
-        private StationControl _stationControlSource; // Bør være en fake?
+        private FakeStationControl _stationControlSource;
 
         [SetUp]
         public void Setup()
         {
             _chargerSimulatorSource = Substitute.For<IUsbCharger>();
             _uut = new ChargeControl(_chargerSimulatorSource);
+            _stationControlSource = new FakeStationControl();
         }
 
         [TestCase(-1)]

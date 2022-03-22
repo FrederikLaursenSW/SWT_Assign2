@@ -41,13 +41,15 @@ namespace LadeskabTest
             Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
         }
 
-        [TestCase(10, true)]
-        public void StartCharge_Started_ConnectionIsTrue(int rfidId, bool isConnected)
+        [TestCase( true)]
+        public void StartCharge_Started_ConnectionIsTrue(bool isConnected)
         {
-            _stationControlSource._state = FakeStationControl.LadeskabState.Available;
-            _stationControlSource.Connected = isConnected;
-            _stationControlSource.RfidDetected(rfidId);
+            //_stationControlSource._state = FakeStationControl.LadeskabState.Available;
+            //_stationControlSource.Connected = isConnected;
+            //_stationControlSource.RfidDetected(rfidId);
             
+            _uut.StartCharge();
+
             Assert.That(_uut.Connected, Is.EqualTo(isConnected));
 
         }

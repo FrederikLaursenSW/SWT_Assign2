@@ -26,7 +26,7 @@ namespace ClassLibrary.Models
 
         public UsbChargerSimulator()
         {
-            CurrentValue = 0.0;
+            CurrentValue = 0;
             Connected = true;
             _overload = false;
 
@@ -113,7 +113,10 @@ namespace ClassLibrary.Models
 
         private void OnNewCurrent()
         {
-            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() {Current = this.CurrentValue, Connected = this.Connected, Overload = this._overload});
+            //CurrentValueEvent?.Invoke(this, e);
+
+            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() { Current = this.CurrentValue });
+            //(this, new CurrentEventArgs() {Current = this.CurrentValue, Connected = this.Connected, Overload = this._overload});
         }
     }
 }

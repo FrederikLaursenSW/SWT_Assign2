@@ -14,17 +14,19 @@ namespace LadeskabTest
     public class ChargeControlUnitTest
     {
         private ChargeControl _uut;
-        private IUsbCharger _chargerSimulatorSource;
+        private UsbChargerSimulator _chargerSimulatorSource;
         //private FakeStationControl _stationControlSource;
 
         [SetUp]
         public void Setup()
         {
             
-            _chargerSimulatorSource = Substitute.For<UsbChargerSimulator>();
+            _chargerSimulatorSource = new UsbChargerSimulator();
             _uut = new ChargeControl(_chargerSimulatorSource);
-            //_stationControlSource = new FakeStationControl();
+            
         }
+
+       
 
         //[TestCase(-1)]
         //[TestCase(0)]
@@ -34,13 +36,13 @@ namespace LadeskabTest
         //[TestCase(6)]
         //[TestCase(499)]
         //[TestCase(500)]
-        [TestCase(501)]
-        [TestCase(2147483647)]
-        public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(double newCurrent)
-        {
-            _chargerSimulatorSource.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = newCurrent});
-            Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
-        }
+        //[TestCase(501)]
+        //[TestCase(2147483647)]
+        //public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(double newCurrent)
+        //{
+        //    _chargerSimulatorSource.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = newCurrent});
+        //    Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
+        //}
 
         [Test]
         public void StartCharge_Started_ConnectionIsTrue()

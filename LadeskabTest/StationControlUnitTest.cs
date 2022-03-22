@@ -30,5 +30,13 @@ namespace LadeskabTest
             _doorSource. DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true});
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         }
+
+        public void HandleRfidDetectedEvent_CurrentDoorIsOpenTrue()
+        {
+            _doorSource.DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true });
+            Assert.That(_uut.CurrentDoorIsOpen, Is.True);
+        }
+
+
     }
 }

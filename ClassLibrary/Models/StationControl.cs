@@ -22,7 +22,7 @@ namespace ClassLibrary.Models
         // Her mangler flere member variable
         private LadeskabState _state;
         private IChargeControl _charger; // Denne linker pt. til et interface til control klassen. Er det ikke forkert? Bør det ikke være til IUsbCharger? Vi kalder jo startCharge på _charger.
-        private int _oldId;
+        public int _oldId { get; set; }
         private IDoor _door;
         private IRfidReader _rfidReader;
 

@@ -26,8 +26,6 @@ namespace ClassLibrary.Models
         private IDoor _door;
         private IRfidReader _rfidReader;
 
-       
-
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         public bool CurrentDoorIsOpen { get; set; }

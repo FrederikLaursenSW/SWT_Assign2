@@ -10,7 +10,7 @@ namespace ClassLibrary.Fakes
 {
     public class FakeStationControl : IStationControl
     {
-        private enum LadeskabState
+        public enum LadeskabState
         {
             Available,
             Locked,
@@ -19,7 +19,7 @@ namespace ClassLibrary.Fakes
 
         public bool Connected { get; set; }
 
-        private LadeskabState _state;
+        public LadeskabState _state;
         private IChargeControl _charger;
         private int _oldId;
 

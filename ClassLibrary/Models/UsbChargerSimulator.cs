@@ -76,11 +76,8 @@ namespace ClassLibrary.Models
             // Ignore if already charging
             if (!_charging)
             {
-                Console.WriteLine("Her kommer vi aldrig ind");
                 if (Connected && !_overload)
                 {
-                    Console.WriteLine("Her kommer vi SLET IKKE ind");
-
                     CurrentValue = 500;
                 }
                 else if (Connected && _overload)
@@ -106,6 +103,9 @@ namespace ClassLibrary.Models
             _timer.Stop();
 
             CurrentValue = 0.0;
+
+            // Connected = false;
+
             OnNewCurrent();
 
             _charging = false;

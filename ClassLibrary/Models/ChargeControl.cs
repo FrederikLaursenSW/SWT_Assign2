@@ -38,15 +38,15 @@ namespace ClassLibrary.Models
             if (NewCurrent > 0 && NewCurrent <= 5)
             {
                 Console.WriteLine("Telefonen er fuldt opladt");
-                testSimulator.StopCharge(); // Kan stoppes?
                 testSimulator.SimulateConnected(false);
+                testSimulator.StopCharge(); // Kan stoppes?
             }
             else if (NewCurrent > 500)
             {
                 Console.WriteLine("Kortslutning: Fjern STRAKS telefonen fra oplader");
+                testSimulator.SimulateConnected(false);
                 testSimulator.StopCharge(); // Skal stoppes?
                 testSimulator.SimulateOverload(true); 
-                testSimulator.SimulateConnected(false);
 
             }
             else if (NewCurrent > 5 && NewCurrent <= 500)
@@ -56,8 +56,8 @@ namespace ClassLibrary.Models
             else
             {
                 Console.WriteLine("Sker der noget eller hvad");
-                testSimulator.StopCharge();
                 testSimulator.SimulateConnected(false);
+                testSimulator.StopCharge();
             }
         }
 

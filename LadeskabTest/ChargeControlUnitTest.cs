@@ -15,14 +15,14 @@ namespace LadeskabTest
     {
         private ChargeControl _uut;
         private IUsbCharger _chargerSimulatorSource;
-        private FakeStationControl _stationControlSource;
+        //private FakeStationControl _stationControlSource;
 
         [SetUp]
         public void Setup()
         {
-            _chargerSimulatorSource = Substitute.For<IUsbCharger>();
+            _chargerSimulatorSource = new UsbChargerSimulator();
             _uut = new ChargeControl(_chargerSimulatorSource);
-            _stationControlSource = new FakeStationControl();
+            //_stationControlSource = new FakeStationControl();
         }
 
         [TestCase(-1)]
@@ -35,23 +35,29 @@ namespace LadeskabTest
         [TestCase(500)]
         [TestCase(501)]
         [TestCase(2147483647)]
-        public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(int newCurrent)
+        public void CurrentChanged_DifferentArguments_CurrentCurrentIsCorrect(double newCurrent)
         {
             _chargerSimulatorSource.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = newCurrent});
             Assert.That(_uut.NewCurrent, Is.EqualTo(newCurrent));
         }
 
-        [TestCase( true)]
-        public void StartCharge_Started_ConnectionIsTrue(bool isConnected)
+        [Test]
+        public void StartCharge_Started_ConnectionIsTrue()
         {
-            //_stationControlSource._state = FakeStationControl.LadeskabState.Available;
-            //_stationControlSource.Connected = isConnected;
-            //_stationControlSource.RfidDetected(rfidId);
-            
             _uut.StartCharge();
+            Assert.That(_uut.Connected, Is.EqualTo(true));
 
-            Assert.That(_uut.Connected, Is.EqualTo(isConnected));
+        }
 
+        [TestCase(0)]
+        [TestCase(3)]
+        [TestCase(10)]
+        [TestCase(600)]
+        public void StopCharge_Started_ConnectionIsFalse(double current)
+        {
+            _uut.NewCurrent = current;
+            _uut.StopCharge();
+            Assert.That(_uut.Connected, Is.EqualTo(false));
         }
 
     }

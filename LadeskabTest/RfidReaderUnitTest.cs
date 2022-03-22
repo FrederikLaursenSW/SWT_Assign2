@@ -29,5 +29,14 @@ namespace LadeskabTest
         }
 
 
+        [TestCase(14)]
+        public void OnRfidRead_equal_to_id(int id)
+        {
+            _uut.OnRfidRead(id);
+            Assert.That(_receivedEventArgs.RfidId, Is.EqualTo(id));
+        }
+
+
+
     }
 }

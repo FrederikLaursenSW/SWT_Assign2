@@ -9,7 +9,7 @@ namespace ClassLibrary.Interfaces
 
     public interface IRfidReader
     {
-        public event EventHandler<RfidEvent> RfidDetectedEvent;
+        event EventHandler<RfidEvent> RfidDetectedEvent;
         void OnRfidRead(int id);
     }
     public class RfidEvent : EventArgs

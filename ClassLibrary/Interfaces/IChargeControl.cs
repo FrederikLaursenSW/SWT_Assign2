@@ -8,11 +8,11 @@ namespace ClassLibrary.Interfaces
 {
     public interface IChargeControl
     {
+        bool Connected { get; set; }
 
-        public bool Connected { get; set; }
+        double NewCurrent { get; set; }
 
-
-       public bool Overload { get; set; }
+        bool Overload { get; set; }
 
         void StartCharge();
         void StopCharge();

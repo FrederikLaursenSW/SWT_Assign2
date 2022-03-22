@@ -8,7 +8,8 @@ using ClassLibrary.Interfaces;
 
 namespace ClassLibrary.Models
 {
-    public class StationControl
+
+    public class StationControl : IStationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
         private enum LadeskabState
@@ -43,7 +44,7 @@ namespace ClassLibrary.Models
         // Her mangler constructor
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        private void RfidDetected(int id)
+        public void RfidDetected(int id)
         {
                switch (_state)
             {

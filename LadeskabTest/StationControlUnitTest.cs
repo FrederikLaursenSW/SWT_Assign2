@@ -35,7 +35,7 @@ namespace LadeskabTest
 
         public void StateAvaileble_RfidDetected_OldIdEqualsNewId()
         {
-            _uut.
+         //   _uut.
         }
         //public void OnRfidDetected_Rfid(int id)
         //{

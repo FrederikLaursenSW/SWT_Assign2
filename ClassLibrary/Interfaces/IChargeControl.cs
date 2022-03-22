@@ -14,6 +14,7 @@ namespace ClassLibrary.Interfaces
 
         bool Overload { get; set; }
 
+        
         void StartCharge();
         void StopCharge();
     }

@@ -22,6 +22,9 @@ namespace ClassLibrary.Interfaces
         // Require connection status of the phone
         bool Connected { get; }
 
+        void SimulateConnected(bool connected);
+        void SimulateOverloaded(bool overloaded);
+
         // Start charging
         void StartCharge();
         // Stop charging

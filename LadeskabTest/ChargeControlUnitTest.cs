@@ -45,6 +45,7 @@ namespace LadeskabTest
         public void StartCharge_Started_ConnectionIsTrue(int rfidId, bool isConnected)
         {
             _stationControlSource._state = FakeStationControl.LadeskabState.Available;
+            _stationControlSource.Connected = isConnected;
             _stationControlSource.RfidDetected(rfidId);
             
             Assert.That(_uut.Connected, Is.EqualTo(isConnected));

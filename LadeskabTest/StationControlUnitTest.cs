@@ -31,11 +31,19 @@ namespace LadeskabTest
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         }
 
+        [Test]
+
+        public void StateAvaileble_RfidDetected_OldIdEqualsNewId()
+        {
+            _uut.
+        }
         //public void OnRfidDetected_Rfid(int id)
         //{
         //    _RfidReaderSource. RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = id });
         //    Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         //}
+
+
 
 
     }

@@ -106,7 +106,7 @@ namespace LadeskabTest
             _uut.StartCharge();
 
             // Next value should be high
-            _uut.SimulateOverload(true);
+            _uut.SimulateOverloaded(true);
 
             // Reset event
             pause.Reset();
@@ -156,7 +156,7 @@ namespace LadeskabTest
             };
 
             // First value should be high
-            _uut.SimulateOverload(true);
+            _uut.SimulateOverloaded(true);
 
             // Start
             _uut.StartCharge();

@@ -66,7 +66,7 @@ namespace ClassLibrary.Models
             Connected = connected;
         }
 
-        public void SimulateOverload(bool overload)
+        public void SimulateOverloaded(bool overload)
         {
             _overload = overload;
         }

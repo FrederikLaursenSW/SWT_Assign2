@@ -39,6 +39,15 @@ namespace LadeskabTest
 
             Assert.That(_uut._oldId, Is.EqualTo(id));
         }
+
+        [TestCase(15,15)]
+        [TestCase(-14,-14)]
+        public void StateLoceked_RfidDetected_ConsoleSaysUnlocked(int id, int newId)
+        {
+            _uut.RfidDetected(id);
+            _uut.RfidDetected(newId);
+            Assert.That(_uut.CurrentDoorIsOpen, Is.True);
+        }
         //public void OnRfidDetected_Rfid(int id)
         //{
         //    _RfidReaderSource. RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = id });

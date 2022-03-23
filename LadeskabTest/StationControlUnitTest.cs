@@ -4,6 +4,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,11 +35,23 @@ namespace LadeskabTest
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         }
 
+
+        [TestCase(14)]
+        [TestCase(-14)]
+        public void ChargerNotConnected_RfidDetected_ConnectedPropertyIsFalse(int id) 
+        {
+            _chargeControl.Connected = false;
+            _uut.RfidDetected(id);
+
+            Assert.That(_uut.Connected, Is.False);
+
+        }
+
+
         [TestCase(14)]
         [TestCase(-14)]
         public void StateAvaileble_RfidDetected_OldIdEqualsNewId(int id)
         {
-            
             _uut.RfidDetected(id);
 
             Assert.That(_uut._oldId, Is.EqualTo(id));

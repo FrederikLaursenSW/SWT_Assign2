@@ -26,9 +26,11 @@ namespace ClassLibrary.Models
         private IDoor _door;
         private IRfidReader _rfidReader;
 
+
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         public bool CurrentDoorIsOpen { get; set; }
+        public bool Connected { get; set; } = true; // dum property for at teste at der ikke er connection
 
         public StationControl(IDoor door, IRfidReader reader, IChargeControl chargeControl)
         {
@@ -63,6 +65,7 @@ namespace ClassLibrary.Models
                     }
                     else
                     {
+                        Connected = false;
                         Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
 

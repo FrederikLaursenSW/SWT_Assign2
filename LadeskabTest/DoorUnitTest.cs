@@ -27,6 +27,14 @@ namespace LadeskabTest
         }
 
         [Test]
+        public void NotSubscribed_OpensDoor_EventNotFired()
+        {
+            
+            _uut.OnDoorOpen();
+            Assert.That(_receivedEventArgs, Is.Null);
+        }
+
+        [Test]
         public void ChangeState_OpensDoor_EventFired()
         {
             _uut.DoorChangedEvent +=
@@ -98,13 +106,7 @@ namespace LadeskabTest
             Assert.That(_receivedEventArgs, Is.Null);
         }
 
-        [Test]
-        public void NotSubscribed_OpensDoor_EventNotFired()
-        {
-            _uut.LockDoor();
-            _uut.OnDoorOpen();
-            Assert.That(_receivedEventArgs, Is.Null);
-        }
+        
 
         [Test]
         public void LockDoorWhileClosed_LockDoor_Locked()

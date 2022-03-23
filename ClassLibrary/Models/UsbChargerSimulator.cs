@@ -115,7 +115,7 @@ namespace ClassLibrary.Models
         {
             //CurrentValueEvent?.Invoke(this, e);
 
-            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() { Current = this.CurrentValue });
+            CurrentValueEvent?.Invoke(this, new CurrentEventArgs() { Current = this.CurrentValue }); // standard koden fra eksemplet.
             //(this, new CurrentEventArgs() {Current = this.CurrentValue, Connected = this.Connected, Overload = this._overload});
         }
     }

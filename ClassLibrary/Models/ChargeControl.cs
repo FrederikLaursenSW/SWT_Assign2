@@ -12,6 +12,7 @@ namespace ClassLibrary.Models
         public bool Connected { get; set; }
         public bool Overload { get; set; }
 
+        public event EventHandler<CurrentEventArgs> CurrentChangedEvent;
 
         public double NewCurrent { get; set; }
 
@@ -34,12 +35,24 @@ namespace ClassLibrary.Models
             _usbCharger.StopCharge();
         }
 
+        public void IsConnected(bool connectState)
+        {
+            Connected = connectState;
+        }
+
         private void HandleChargingEvent(Object o, CurrentEventArgs chargingEvent)
         {
-            
-            double Current = chargingEvent.Current;
 
-            switch (Current)
+            CurrentChanged(chargingEvent.Current);
+       
+        }
+
+        public void CurrentChanged(double current)
+        {
+
+            NewCurrent = current;
+
+            switch (NewCurrent)
             {
                 case 0:
                     //nothing happens
@@ -49,7 +62,7 @@ namespace ClassLibrary.Models
                     Console.WriteLine("Telefonen er fuldt opladt");
                     _usbCharger.SimulateConnected(false);
                     StopCharge();
-                    
+
                     break;
 
                 case double x when (x > 500):
@@ -58,12 +71,12 @@ namespace ClassLibrary.Models
                     StopCharge();
                     _usbCharger.SimulateOverloaded(true);
                     break;
-                case double x when(x > 5 && x <= 500):
+                case double x when (x > 5 && x <= 500):
                     Console.WriteLine("Mobilen lader");
                     break;
             }
-
-            
         }
-    }
+
+        
+}
 }

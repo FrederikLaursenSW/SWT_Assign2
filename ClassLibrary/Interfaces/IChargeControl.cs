@@ -8,6 +8,7 @@ namespace ClassLibrary.Interfaces
 {
     public interface IChargeControl
     {
+        //event EventHandler<CurrentEventArgs> CurrentValueEvent;
         bool Connected { get; set; }
 
         double NewCurrent { get; set; }

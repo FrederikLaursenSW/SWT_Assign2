@@ -23,16 +23,18 @@ namespace LadeskabTest
 
             _uut = new Door(); 
 
+            
+        }
+
+        [Test]
+        public void ChangeState_OpensDoor_EventFired()
+        {
             _uut.DoorChangedEvent +=
                 (o, args) =>
                 {
                     _receivedEventArgs = args;
                 };
-        }
 
-        [Test]
-        public void ChangeState_OpensDoor_EventFired()
-        { 
             _uut.OnDoorOpen();
             Assert.That(_receivedEventArgs, Is.Not.Null);
         }
@@ -40,6 +42,12 @@ namespace LadeskabTest
         [Test]
         public void ChangeState_OpensDoor_DoorIsOpen()
         {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
             _uut.OnDoorOpen();
             Assert.That(_receivedEventArgs.DoorIsOpen, Is.True);
         }
@@ -47,6 +55,12 @@ namespace LadeskabTest
         [Test]
         public void ChangeStateDoorClosedAndLocked_OpensDoor_DoorIsOpen()
         {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
             _uut.IsDoorOpen = true;
             _uut.IsDoorLocked = false;
             _uut.OnDoorOpen();
@@ -58,6 +72,12 @@ namespace LadeskabTest
         [Test]
         public void ChangeStateFromOpen_OnCloseDoor_DoorIsClosed()
         {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
             _uut.IsDoorOpen = true;
             _uut.OnDoorClose();
             Assert.That(_receivedEventArgs.DoorIsOpen, Is.False);
@@ -66,6 +86,20 @@ namespace LadeskabTest
 
         [Test]
         public void ChangeStateWhileLocked_OpensDoor_EventNotFired()
+        {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
+            _uut.LockDoor();
+            _uut.OnDoorOpen();
+            Assert.That(_receivedEventArgs, Is.Null);
+        }
+
+        [Test]
+        public void NotSubscribed_OpensDoor_EventNotFired()
         {
             _uut.LockDoor();
             _uut.OnDoorOpen();
@@ -93,6 +127,12 @@ namespace LadeskabTest
         [Test]
         public void LockDoorWhileOpen_LockDoor_NotLocked()
         {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
             _uut.OnDoorOpen();
             _uut.LockDoor();
 
@@ -102,6 +142,12 @@ namespace LadeskabTest
         [Test]
         public void SendSameState_OnCloseDoor_eventNotFired()
         {
+            _uut.DoorChangedEvent +=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
             _uut.OnDoorClose();
             Assert.That(_receivedEventArgs, Is.Null);
         }

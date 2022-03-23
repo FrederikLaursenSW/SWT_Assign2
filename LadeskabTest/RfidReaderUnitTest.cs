@@ -20,8 +20,6 @@ namespace LadeskabTest
             _receivedEventArgs = null;
 
             _uut = new RfidReader();
-
-           
         }
 
         [TestCase(14)]
@@ -47,7 +45,7 @@ namespace LadeskabTest
                };
 
             _uut.OnRfidRead(id);
-            
+
 
             _uut.RfidDetectedEvent -=
                 (o, args) =>
@@ -59,20 +57,17 @@ namespace LadeskabTest
             Assert.That(_receivedEventArgs.RfidId, Is.EqualTo(id));
         }
 
-
         [TestCase(14)]
         public void OnRfidDetected_EventNotFired(int id)
         {
-
             _uut.OnRfidRead(id);
 
             Assert.That(_receivedEventArgs, Is.Null);
         }
 
-
         [TestCase(14)]
         [TestCase(-14)]
-        public void OnRfidRead_equal_to_id(int id)
+        public void OnRfidRead_equalToId(int id)
         {
             _uut.RfidDetectedEvent +=
                (o, args) =>

@@ -10,9 +10,7 @@ namespace ClassLibrary.Interfaces
     {
         //event EventHandler<CurrentEventArgs> CurrentValueEvent;
         bool Connected { get; set; }
-
         double NewCurrent { get; set; }
-        
         void StartCharge();
         void StopCharge();
     }

@@ -17,7 +17,7 @@ namespace LadeskabTest
         private IRfidReader _RfidReaderSource;
         private IChargeControl _chargeControl;
         private StationControl _uut;
-       
+
         [SetUp]
         public void Setup()
         {
@@ -31,29 +31,26 @@ namespace LadeskabTest
         [Test]
         public void ChangedState_DoorOpens_CurrentDoorIsOpenTrue()
         {
-            _doorSource.DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true});
+            _doorSource.DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true });
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         }
 
-        [TestCase( 10)]
+        [TestCase(10)]
         public void ChangedState_OnRfidRead_OldIdEqualsrfId(int rfId)
         {
             _RfidReaderSource.RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = rfId });
             Assert.That(_uut._oldId, Is.EqualTo(rfId));
         }
 
-
         [TestCase(14)]
         [TestCase(-14)]
-        public void ChargerNotConnected_RfidDetected_ConnectedPropertyIsFalse(int id) 
+        public void ChargerNotConnected_RfidDetected_ConnectedPropertyIsFalse(int id)
         {
             _chargeControl.Connected = false;
             _uut.RfidDetected(id);
 
             Assert.That(_uut.Connected, Is.False);
-
         }
-
 
         [TestCase(14)]
         [TestCase(-14)]
@@ -64,8 +61,6 @@ namespace LadeskabTest
             Assert.That(_uut._oldId, Is.EqualTo(id));
         }
 
-
-        
         [TestCase(15, 15)]
         [TestCase(-14, -14)]
         public void StateLoceked_RfidDetected_CurrentDoorIsOpenTrue(int id, int newId)
@@ -74,12 +69,6 @@ namespace LadeskabTest
             _uut.RfidDetected(newId);
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         }
-        //public void OnRfidDetected_Rfid(int id)
-        //{
-        //    _RfidReaderSource. RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = id });
-        //    Assert.That(_uut.CurrentDoorIsOpen, Is.True);
-        //}
-
 
         [TestCase(15, 16)]
         [TestCase(-15, -16)]

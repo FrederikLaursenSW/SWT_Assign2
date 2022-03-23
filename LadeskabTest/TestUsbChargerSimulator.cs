@@ -91,7 +91,7 @@ namespace LadeskabTest
 
 
         [Test]
-        public void Started_SimulateOverload_ReceivesHighValue()
+ public void Started_SimulateOverload_ReceivesHighValue()
         {
             ManualResetEvent pause = new ManualResetEvent(false);
             double lastValue = 0;

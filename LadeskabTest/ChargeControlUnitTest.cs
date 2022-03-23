@@ -19,10 +19,10 @@ namespace LadeskabTest
         [SetUp]
         public void Setup()
         {
-            
+
             _chargerSimulatorSource = Substitute.For<IUsbCharger>();
             _uut = new ChargeControl(_chargerSimulatorSource);
-            
+
         }
 
         [TestCase(-1)]
@@ -49,8 +49,8 @@ namespace LadeskabTest
         }
 
 
-        [TestCase (false)]
-        public void DisconnectDevice_IsConnected_ConnectedFalse(bool connectState )
+        [TestCase(false)]
+        public void DisconnectDevice_IsConnected_ConnectedFalse(bool connectState)
         {
             _uut.IsConnected(connectState);
 
@@ -63,19 +63,5 @@ namespace LadeskabTest
             _uut.IsConnected(connectState);
             Assert.That(_uut.Connected, Is.EqualTo(true));
         }
-
-        //[TestCase(0)]
-        //[TestCase(3)]
-        //[TestCase(10)]
-        //[TestCase(600)]
-
-        //public void StopCharge_Started_ConnectionIsFalse(double current)
-        //{
-        //    _uut.NewCurrent = current;
-        //    _uut.StopCharge();
-
-        //    Assert.That(_uut.Connected, Is.EqualTo(false));
-        //}
-
     }
 }

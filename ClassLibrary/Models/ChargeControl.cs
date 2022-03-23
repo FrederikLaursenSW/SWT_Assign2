@@ -12,13 +12,11 @@ namespace ClassLibrary.Models
         public bool Connected { get; set; }
 
         public event EventHandler<CurrentEventArgs> CurrentChangedEvent;
-
         public double NewCurrent { get; set; }
 
         private IUsbCharger _usbCharger;
         public ChargeControl(IUsbCharger usbCharger)
         {
-           
             _usbCharger = usbCharger;
             _usbCharger.CurrentValueEvent += HandleChargingEvent;
             Connected = true;
@@ -41,9 +39,7 @@ namespace ClassLibrary.Models
 
         private void HandleChargingEvent(Object o, CurrentEventArgs chargingEvent)
         {
-
             CurrentChanged(chargingEvent.Current);
-       
         }
 
         public void CurrentChanged(double current)
@@ -75,7 +71,5 @@ namespace ClassLibrary.Models
                     break;
             }
         }
-
-        
-}
+    }
 }

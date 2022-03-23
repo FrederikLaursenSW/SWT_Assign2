@@ -46,7 +46,7 @@ namespace ClassLibrary.Models
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         public void RfidDetected(int id)
         {
-               switch (_state)
+            switch (_state)
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
@@ -68,7 +68,6 @@ namespace ClassLibrary.Models
                         Connected = false;
                         Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
-
                     break;
 
                 //case LadeskabState.DoorOpen:
@@ -96,12 +95,9 @@ namespace ClassLibrary.Models
                     {
                         Console.WriteLine("Forkert RFID tag");
                     }
-
                     break;
             }
         }
-
-        // Her mangler de andre trigger handlere
 
         private void HandleDoorChangedEvent(Object o, DoorEvents doorEvent)
         {

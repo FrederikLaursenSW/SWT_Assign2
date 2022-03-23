@@ -27,11 +27,11 @@ namespace ClassLibrary.Models
 
         public void OnDoorOpen()
         {
-            if (IsDoorOpen == false && IsDoorLocked == false )
+            if (IsDoorOpen == false && IsDoorLocked == false)
             {
                 IsDoorOpen = true;
                 OnDoorChanged(new DoorEvents { DoorIsOpen = IsDoorOpen });
-                
+
             }
         }
         public void OnDoorClose()
@@ -40,7 +40,7 @@ namespace ClassLibrary.Models
             {
                 IsDoorOpen = false;
                 OnDoorChanged(new DoorEvents { DoorIsOpen = IsDoorOpen });
-                
+
             }
         }
         public void OnDoorChanged(DoorEvents e)

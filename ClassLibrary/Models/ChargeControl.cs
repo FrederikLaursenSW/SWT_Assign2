@@ -10,7 +10,6 @@ namespace ClassLibrary.Models
     public class ChargeControl : IChargeControl
     {
         public bool Connected { get; set; }
-        public bool Overload { get; set; }
 
         public event EventHandler<CurrentEventArgs> CurrentChangedEvent;
 

@@ -59,12 +59,11 @@ namespace LadeskabTest
         }
 
         [TestCase(true)]
-        public void ConnecctDevice_IsConnected_ConnecTrrue(bool connectState)
+        public void ConnecctDevice_IsConnected_ConnectTrue(bool connectState)
         {
             _uut.IsConnected(connectState);
             Assert.That(_uut.Connected, Is.EqualTo(true));
         }
-
 
         //[TestCase(0)]
         //[TestCase(3)]

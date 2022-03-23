@@ -12,9 +12,6 @@ namespace ClassLibrary.Interfaces
         bool Connected { get; set; }
 
         double NewCurrent { get; set; }
-
-        bool Overload { get; set; }
-
         
         void StartCharge();
         void StopCharge();

@@ -92,7 +92,7 @@ namespace LadeskabTest
                 {
                     _receivedEventArgs = args;
                 };
-
+           
             _uut.LockDoor();
             _uut.OnDoorOpen();
             Assert.That(_receivedEventArgs, Is.Null);

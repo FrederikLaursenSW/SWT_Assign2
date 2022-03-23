@@ -31,8 +31,15 @@ namespace LadeskabTest
         [Test]
         public void ChangedState_DoorOpens_CurrentDoorIsOpenTrue()
         {
-            _doorSource. DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true});
+            _doorSource.DoorChangedEvent += Raise.EventWith(new DoorEvents { DoorIsOpen = true});
             Assert.That(_uut.CurrentDoorIsOpen, Is.True);
+        }
+
+        [TestCase( 10)]
+        public void ChangedState_OnRfidRead_OldIdEqualsrfId(int rfId)
+        {
+            _RfidReaderSource.RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = rfId });
+            Assert.That(_uut._oldId, Is.EqualTo(rfId));
         }
 
 

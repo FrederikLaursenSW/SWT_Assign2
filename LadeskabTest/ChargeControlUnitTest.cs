@@ -26,8 +26,6 @@ namespace LadeskabTest
             
         }
 
-       
-
         //[TestCase(-1)]
         //[TestCase(0)]
         //[TestCase(1)]
@@ -52,16 +50,16 @@ namespace LadeskabTest
 
         }
 
-        [TestCase(0)]
-        [TestCase(3)]
-        [TestCase(10)]
-        [TestCase(600)]
-        public void StopCharge_Started_ConnectionIsFalse(double current)
-        {
-            _uut.NewCurrent = current;
-            _uut.StopCharge();
-            Assert.That(_uut.Connected, Is.EqualTo(false));
-        }
+        //[TestCase(0)]
+        //[TestCase(3)]
+        //[TestCase(10)]
+        //[TestCase(600)]
+        //public void StopCharge_Started_ConnectionIsFalse(double current)
+        //{
+        //    _uut.NewCurrent = current;
+        //    _uut.StopCharge();
+        //    Assert.That(_uut.Connected, Is.EqualTo(false));
+        //}
 
     }
 }

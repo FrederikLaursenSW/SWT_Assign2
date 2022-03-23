@@ -30,13 +30,13 @@ namespace ClassLibrary.Models
 
         public bool CurrentDoorIsOpen { get; set; }
 
-        public StationControl(IDoor door, IRfidReader reader)
+        public StationControl(IDoor door, IRfidReader reader, IChargeControl chargeControl)
         {
+            _charger = chargeControl;
             _door = door;
             _door.DoorChangedEvent += HandleDoorChangedEvent;
             _rfidReader = reader;
             _rfidReader.RfidDetectedEvent += HandleRfidDetectedEvent;
-            _charger = new ChargeControl(new UsbChargerSimulator());
         }
 
         // Her mangler constructor
@@ -80,6 +80,7 @@ namespace ClassLibrary.Models
 
                         _charger.StopCharge();
                         _door.UnLockDoor();
+                        CurrentDoorIsOpen = true;
                         using (var writer = File.AppendText(logFile))
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);

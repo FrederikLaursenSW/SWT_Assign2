@@ -20,7 +20,9 @@ namespace SWT_Assign2
 
             Door door = new Door();
             RfidReader rfidReader = new RfidReader();
-            StationControl stationControl = new StationControl(door, rfidReader);
+            UsbChargerSimulator usbChargerSimulator = new UsbChargerSimulator();
+            ChargeControl chargeControl = new ChargeControl(usbChargerSimulator);
+            StationControl stationControl = new StationControl(door, rfidReader, chargeControl);
 
             bool finish = false;
             do

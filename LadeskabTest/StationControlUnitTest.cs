@@ -14,6 +14,7 @@ namespace LadeskabTest
     {
         private IDoor _doorSource; // Måske skal dette være en Fake class?
         private IRfidReader _RfidReaderSource;
+        private IChargeControl _chargeControl;
         private StationControl _uut;
        
         [SetUp]
@@ -21,7 +22,9 @@ namespace LadeskabTest
         {
             _doorSource = Substitute.For<IDoor>();
             _RfidReaderSource = Substitute.For<IRfidReader>();
-            _uut = new StationControl(_doorSource, _RfidReaderSource);
+            _chargeControl = Substitute.For<IChargeControl>();
+            _chargeControl.Connected = true;
+            _uut = new StationControl(_doorSource, _RfidReaderSource, _chargeControl);
         }
 
         [Test]
@@ -35,19 +38,20 @@ namespace LadeskabTest
         [TestCase(-14)]
         public void StateAvaileble_RfidDetected_OldIdEqualsNewId(int id)
         {
+            
             _uut.RfidDetected(id);
 
             Assert.That(_uut._oldId, Is.EqualTo(id));
         }
 
-        //[TestCase(15,15)]
-        //[TestCase(-14,-14)]
-        //public void StateLoceked_RfidDetected_ConsoleSaysUnlocked(int id, int newId)
-        //{
-        //    _uut.RfidDetected(id);
-        //    _uut.RfidDetected(newId);
-        //    Assert.That(_uut.CurrentDoorIsOpen, Is.True);
-        //}
+        [TestCase(15, 15)]
+        [TestCase(-14, -14)]
+        public void StateLoceked_RfidDetected_ConsoleSaysUnlocked(int id, int newId)
+        {
+            _uut.RfidDetected(id);
+            _uut.RfidDetected(newId);
+            Assert.That(_uut.CurrentDoorIsOpen, Is.True);
+        }
         //public void OnRfidDetected_Rfid(int id)
         //{
         //    _RfidReaderSource. RfidDetectedEvent += Raise.EventWith(new RfidEvent { RfidId = id });

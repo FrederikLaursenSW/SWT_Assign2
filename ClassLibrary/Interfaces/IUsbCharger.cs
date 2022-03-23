@@ -6,9 +6,6 @@ namespace ClassLibrary.Interfaces
     {
         // Value in mA (milliAmpere)
         public double Current { set; get; }
-
-        public bool Connected { set; get; }
-        public bool Overload { set; get; }
     }
 
     public interface IUsbCharger

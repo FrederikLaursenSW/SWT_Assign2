@@ -45,6 +45,17 @@ namespace LadeskabTest
         }
 
         [Test]
+        public void ChangeStateDoorClosedAndLocked_OpensDoor_DoorIsOpen()
+        {
+            _uut.IsDoorOpen = false;
+            _uut.IsDoorLocked = true;
+            _uut.OnDoorOpen();
+            Assert.That(_receivedEventArgs, Is.Null);
+        }
+
+
+
+        [Test]
         public void ChangeStateFromOpen_OnCloseDoor_DoorIsClosed()
         {
             _uut.IsDoorOpen = true;

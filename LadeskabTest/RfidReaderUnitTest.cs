@@ -35,6 +35,26 @@ namespace LadeskabTest
             Assert.That(_receivedEventArgs, Is.Not.Null);
         }
 
+        [TestCase(14, 20)]
+        public void OnRfidDetected_EventNotFired(int id, int newId)
+        {
+            
+
+            _uut.OnRfidRead(id);
+            
+
+            _uut.RfidDetectedEvent -=
+                (o, args) =>
+                {
+                    _receivedEventArgs = args;
+                };
+
+
+            Assert.That(_receivedEventArgs.RfidId, Is.EqualTo(id));
+        }
+
+
+
         [TestCase(14)]
         [TestCase(-14)]
         public void OnRfidRead_equal_to_id(int id)

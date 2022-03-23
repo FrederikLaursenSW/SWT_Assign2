@@ -29,7 +29,7 @@ namespace ClassLibrary.Models
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        public bool CurrentDoorIsOpen { get; set; }
+        public bool CurrentDoorIsOpen { get; set; } // Dum property for at teste om der er åbnet eller lukket
         public bool Connected { get; set; } = true; // dum property for at teste at der ikke er connection
 
         public StationControl(IDoor door, IRfidReader reader, IChargeControl chargeControl)
@@ -71,9 +71,9 @@ namespace ClassLibrary.Models
 
                     break;
 
-                case LadeskabState.DoorOpen:
-                    // Ignore
-                    break;
+                //case LadeskabState.DoorOpen:
+                //    // Ignore
+                //    break;
 
                 case LadeskabState.Locked:
                     // Check for correct ID

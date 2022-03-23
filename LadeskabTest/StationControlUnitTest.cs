@@ -57,9 +57,11 @@ namespace LadeskabTest
             Assert.That(_uut._oldId, Is.EqualTo(id));
         }
 
+
+        
         [TestCase(15, 15)]
         [TestCase(-14, -14)]
-        public void StateLoceked_RfidDetected_ConsoleSaysUnlocked(int id, int newId)
+        public void StateLoceked_RfidDetected_CurrentDoorIsOpenTrue(int id, int newId)
         {
             _uut.RfidDetected(id);
             _uut.RfidDetected(newId);
@@ -71,6 +73,15 @@ namespace LadeskabTest
         //    Assert.That(_uut.CurrentDoorIsOpen, Is.True);
         //}
 
+
+        [TestCase(15, 16)]
+        [TestCase(-15, -16)]
+        public void StateLoceked_RfidDetected_CurrentDoorIsOpenFalse(int id, int newId)
+        {
+            _uut.RfidDetected(id);
+            _uut.RfidDetected(newId);
+            Assert.That(_uut.CurrentDoorIsOpen, Is.False);
+        }
 
 
 

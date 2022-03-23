@@ -47,7 +47,6 @@ namespace LadeskabTest
         {
             _uut.StartCharge();
             Assert.That(_uut.Connected, Is.EqualTo(true));
-
         }
 
         //[TestCase(0)]

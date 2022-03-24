@@ -9,7 +9,7 @@ using ClassLibrary.Interfaces;
 namespace ClassLibrary.Models
 {
 
-    public class StationControl : IStationControl
+    public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
         private enum LadeskabState
